@@ -72,10 +72,10 @@ sudo chown jenkins:jenkins /var/lib/jenkins/plugins/*.jpi
 sudo systemctl restart jenkins
 
 # jenkins ssh key
-ssh-keygen -t ed25519 -C "jenkins@$SERVER_NAME"
+ssh-keygen -f ~/.ssh/jenkins-key -t ed25519 -C "jenkins@$SERVER_NAME"
 sudo mkdir -p /var/lib/jenkins/keys
-sudo cp ~/.ssh/id_ed25519 /var/lib/jenkins/keys
+sudo cp ~/.ssh/jenkins-key* /var/lib/jenkins/keys
 sudo chown jenkins:jenkins /var/lib/jenkins/keys/*
 echo "A public/private keypair has been created to allow Jenkins to connect to code repositories using SSH"
-echo "The public part of this key must be installed in the target repositories. It is shown below and can found here ~/.ssh/id_ed25519.pub"
-cat ~/.ssh/id_ed25519.pub
+echo "The public part of this key must be installed in the target repositories. It is shown below and can found here /var/lib/jenkins/keys/jenkins-key.pub"
+cat /var/lib/jenkins/keys/jenkins-key.pub
