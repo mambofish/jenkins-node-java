@@ -4,6 +4,10 @@ sudo apt install zip
 
 # nginx
 sudo apt install nginx
+
+# creates a composite certificate for nginx. Usually, certificates are installed in two
+# parts, the client certificate (clientcert) and the root and any intermediate certificates
+# (cacert). nginx requires these to bundled together.
 sudo cat /certs/clientcert.cer /certs/cacert.cer | sudo tee /certs/ssl-bundle.cer
 
 echo -n "Enter the public URL of this server and press [ENTER] "
