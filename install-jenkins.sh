@@ -4,6 +4,7 @@ sudo apt install maven
 sudo apt install xmlstarlet
 sudo apt install zip
 sudo apt install build-essential
+sudo apt install python-yaml
 
 # nginx
 sudo apt install nginx
