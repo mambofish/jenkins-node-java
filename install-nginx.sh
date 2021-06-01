@@ -1,15 +1,12 @@
 # apt packages
 sudo apt install openjdk-8-jdk
-sudo apt install maven
-sudo apt install xmlstarlet
 sudo apt install zip
-sudo apt install build-essential
 
 # nginx
 sudo apt install nginx
 sudo cat /certs/clientcert.cer /certs/cacert.cer | sudo tee /certs/ssl-bundle.cer
 
-echo -n "Enter the public URL of this server and press [ENTER]"
+echo -n "Enter the public URL of this server and press [ENTER] "
 read SERVER_NAME
 
 sudo tee /etc/nginx/sites-available/default << EOF
