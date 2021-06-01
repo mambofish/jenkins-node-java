@@ -9,10 +9,10 @@ sudo apt install build-essential
 sudo apt install nginx
 sudo cat /certs/clientcert.cer /certs/cacert.cer | sudo tee /certs/ssl-bundle.cer
 
-echo -n "Enter the public URL of this server and press [ENTER]"
+echo -n "Enter the public URL of this server and press [ENTER] "
 read SERVER_NAME
 
-sudo tee /etc/nginx/sites-available/default.conf << EOF
+sudo tee /etc/nginx/sites-available/default << EOF
 server {
     listen 443 ssl http2;
     server_name $SERVER_NAME;
@@ -59,7 +59,7 @@ sudo cp /var/lib/jenkins/config.xml /var/lib/jenkins/config.xml.bak
 sudo xmlstarlet ed -u "hudson/crumbIssuer/excludeClientIPFromCrumb" -v true /var/lib/jenkins/config.xml.bak > /var/lib/jenkins/config.xml
 echo "Azure Proxy compatibility has been set up. Restarting Jenkins..."
 sudo systemctl restart jenkins
-echo Jenkins has been restarted. Use the following credentials to perform the initial set up from the Jenkins web server
+echo "Jenkins has been restarted. Use the following credentials to perform the initial set up from the Jenkins web server"
 echo username: admin
 echo password: $(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
 
@@ -77,5 +77,6 @@ sudo mkdir -p /var/lib/jenkins/keys
 sudo cp ~/.ssh/jenkins-key* /var/lib/jenkins/keys
 sudo chown jenkins:jenkins /var/lib/jenkins/keys/*
 echo "A public/private keypair has been created to allow Jenkins to connect to code repositories using SSH"
-echo "The public part of this key must be installed in the target repositories. It is shown below and can found here /var/lib/jenkins/keys/jenkins-key.pub"
+echo "The public part of this key must be installed in the repositories you want to connect to."
+echo "The key is shown below and can found here /var/lib/jenkins/keys/jenkins-key.pub"
 cat /var/lib/jenkins/keys/jenkins-key.pub
