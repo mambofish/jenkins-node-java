@@ -42,11 +42,6 @@ echo "npm and node installed with the following versions"
 npm -v
 node -v
 
-# git-secret
-git clone https://github.com/sobolevn/git-secret.git git-secret
-cd git-secret && sudo make build
-PREFIX="/usr/local" sudo make install
-
 # jenkins
 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
 sudo sh -c 'echo deb https://pkg.jenkins.io/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
@@ -80,3 +75,9 @@ echo "A public/private keypair has been created to allow Jenkins to connect to c
 echo "The public part of this key must be installed in the repositories you want to connect to."
 echo "The key is shown below and can found here /var/lib/jenkins/keys/jenkins-key.pub"
 cat /var/lib/jenkins/keys/jenkins-key.pub
+
+# git-secret
+git clone https://github.com/sobolevn/git-secret.git git-secret
+cd git-secret && sudo make build
+PREFIX="/usr/local" sudo make install
+
