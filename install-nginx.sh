@@ -3,6 +3,10 @@ sudo apt install openjdk-8-jdk
 sudo apt install zip
 
 # nginx
+sudo apt-key add nginx_signing.key 
+sudo echo 'deb https://nginx.org/packages/mainline/debian/ bionic nginx' >> /etc/apt/sources.list
+sudo echo 'deb-src https://nginx.org/packages/mainline/debian/ bionic nginx' >> /etc/apt/sources.list
+sudo apt-get update
 sudo apt install nginx
 
 # creates a composite certificate for nginx. Usually, certificates are installed in two
